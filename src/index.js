@@ -2,6 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, combineReducers } from "redux";
 
+const ADD_ITEM = "ADD_ITEM";
+
+const action = {
+  type: ADD_ITEM,
+  item: "apple"
+};
+
 const addItem = item => {
   return {
     type: "ADD_ITEM",
