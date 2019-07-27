@@ -31,14 +31,14 @@ const reducer = (state = [], action) => {
   }
 };
 
-var store = createStore(reducer);
+const store = createStore(reducer);
 
-console.log(store.dispatch(addItem("a")));
-console.log(store.getState());
-console.log(store.dispatch(addItem("b")));
-console.log(store.getState());
-console.log(store.dispatch(addItem("c")));
-console.log(store.getState());
+const state = store.getState();
+console.log("im state: ", state);
+
+const dispatched = store.dispatch(addItem("apple"));
+console.log("im dispatched: ", dispatched);
+console.log("im getState: ", store.getState());
 
 function App() {
   return (
