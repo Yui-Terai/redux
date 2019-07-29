@@ -4,20 +4,17 @@ import { createStore, combineReducers } from "redux";
 
 const ADD_ITEM = "ADD_ITEM";
 
-const action = {
-  type: ADD_ITEM,
-  item: "apple"
-};
-
-const addItem = item => {
+const addItem = (name, price) => {
   return {
     type: "ADD_ITEM",
-    item: item
+    item: {
+      name: name,
+      price: price
+    }
   };
 };
 
-//reducer
-const reducer = (state = [], action) => {
+const items = (state = [], action) => {
   switch (action.type) {
     case "ADD_ITEM":
       return [...state, action.item];
@@ -30,6 +27,30 @@ const reducer = (state = [], action) => {
       return state;
   }
 };
+
+const filter = (state = [], action) => {
+  switch (action.type) {
+    case "SET_FILTER":
+      return action.filter;
+    default:
+      return state;
+  }
+};
+
+const discount = (state = "none", action) => {
+  switch (action.type) {
+    case "SET_DISCOUNT":
+      return action.discount;
+    default:
+      return state;
+  }
+};
+
+const reducer = combineReducers({
+  items,
+  filter,
+  discount
+});
 
 const store = createStore(reducer);
 
